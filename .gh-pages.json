@@ -1,0 +1,10 @@
+{
+  "dotfiles": false,
+  "src": "dist",
+  "dest": "gh-pages",
+  "exclude": [
+    "node_modules",
+    ".git",
+    ".cache"
+  ]
+}

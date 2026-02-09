@@ -13,13 +13,15 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      {/* 🔴 FIX IS HERE */}
-      <BrowserRouter basename="/myown">
+
+      {/* ✅ FIXED */}
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
     </TooltipProvider>
   </QueryClientProvider>
 );

@@ -139,7 +139,7 @@ export const Contact = () => {
           </p>
 
           <div className="mt-8 flex items-center gap-4">
-            <img src="/nishchal.jpg" alt="Nishchal KC" loading="lazy" className="h-20 w-20 rounded-full object-cover object-top ring-2 ring-accent/60 ring-offset-4 ring-offset-background" />
+            <img src="/nishchal-kc-blockchain-developer-nepal.jpg" alt="Nishchal KC, freelance blockchain and full-stack developer" loading="lazy" className="h-20 w-20 rounded-full object-cover object-top ring-2 ring-accent/60 ring-offset-4 ring-offset-background" />
             <div>
               <p className="font-display text-xl font-semibold">{site.name}</p>
               <p className="flex items-center gap-2 text-sm text-muted-foreground">

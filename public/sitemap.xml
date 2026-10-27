@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://www.nishchalkc.com.np/</loc>
+    <loc>https://nishchalkc.com.np/</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/nishchal-kc-blockchain-developer-nepal.jpg</image:loc>
+      <image:title>Nishchal KC, blockchain and full-stack developer from Nepal</image:title>
+      <image:caption>Portrait of Nishchal KC, freelance blockchain and full-stack developer, in his graduation gown</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/og-image.png</image:loc>
+      <image:title>Nishchal KC, Blockchain &amp; Full-Stack Developer</image:title>
+      <image:caption>Nishchal KC freelance blockchain and full-stack developer, Solidity, React, Web3 and UI design</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/logo.png</image:loc>
+      <image:title>Nishchal KC logo</image:title>
+      <image:caption>NK monogram logo of Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/delight-mart.webp</image:loc>
+      <image:title>Delight Shopping Mart website</image:title>
+      <image:caption>Delight Shopping Mart, an online supermarket for Tulsipur and Ghorahi, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/next-owner.jpg</image:loc>
+      <image:title>NextOwner campus marketplace</image:title>
+      <image:caption>NextOwner, a campus marketplace progressive web app for students, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/printcloud.jpg</image:loc>
+      <image:title>PrintCloud print service website</image:title>
+      <image:caption>PrintCloud, print documents from a QR code with eSewa payment, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/rushit.jpg</image:loc>
+      <image:title>RushIT cybersecurity website</image:title>
+      <image:caption>RushIT cybersecurity and IT consulting website, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/seva-nidhi.jpg</image:loc>
+      <image:title>Uttarakhand Seva Nidhi website</image:title>
+      <image:caption>Uttarakhand Seva Nidhi environmental education trust website, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/tw-trainz.jpg</image:loc>
+      <image:title>TW Trainz website</image:title>
+      <image:caption>TW Trainz sales training company website, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/the-mist.jpg</image:loc>
+      <image:title>The Mist restaurant website</image:title>
+      <image:caption>The Mist restaurant website with online ordering and table booking, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/rani-cake.jpg</image:loc>
+      <image:title>Rani Cake website</image:title>
+      <image:caption>Rani Cake cake shop website, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/divya-kunj.jpg</image:loc>
+      <image:title>Divya Kunj Academy website</image:title>
+      <image:caption>Divya Kunj Academy school website, built by Nishchal KC</image:caption>
+    </image:image>
   </url>
 </urlset>

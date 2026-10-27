@@ -10,7 +10,7 @@ const Row = ({ p, i }: { p: Project; i: number }) => {
     <Reveal>
       <article className="group grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-14">
         <div className={`lg:col-span-6 ${flip ? 'lg:order-2' : ''}`}>
-          <Laptop src={p.image ?? `/img/cover-${p.cover}.svg`} alt={`${p.title} project preview`} />
+          <Laptop src={p.image ?? `/img/cover-${p.cover}.svg`} alt={`${p.title} website screenshot, a project built by Nishchal KC`} />
         </div>
 
         <div className={`lg:col-span-6 ${flip ? 'lg:order-1' : ''}`}>

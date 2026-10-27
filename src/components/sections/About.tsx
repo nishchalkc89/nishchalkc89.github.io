@@ -17,8 +17,8 @@ export const About = () => (
           <div aria-hidden className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/40 via-transparent to-accent/40 blur-2xl" />
           <div className="panel relative overflow-hidden p-2">
             <img
-              src="/nishchal.jpg"
-              alt="Portrait of Nishchal KC"
+              src="/nishchal-kc-blockchain-developer-nepal.jpg"
+              alt="Nishchal KC, blockchain and full-stack developer from Nepal, in his graduation gown"
               loading="lazy"
               className="aspect-[4/5] w-full rounded-[1.1rem] object-cover object-top"
             />

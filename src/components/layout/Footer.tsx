@@ -77,7 +77,7 @@ export const Footer = () => {
           {/* brand, email box, socials */}
           <div className="lg:col-span-4">
             <a href="#top" aria-label="Nishchal KC, home" className="inline-block">
-              <img src="/logo.png" alt="NK" className="h-14 w-auto" />
+              <img src="/logo.png" alt="Nishchal KC logo" className="h-14 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Blockchain and full-stack projects for growing businesses. Have an idea? Be part of my client family!

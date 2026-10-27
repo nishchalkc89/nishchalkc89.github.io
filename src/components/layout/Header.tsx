@@ -18,7 +18,7 @@ export const Header = () => {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/5 bg-background/75 backdrop-blur-xl">
       <div className="wrap flex h-16 items-center justify-between gap-4">
         <a href="#top" className="flex items-center" aria-label="Nishchal KC, home">
-          <img src="/logo.png" alt="NK" className="h-9 w-auto" />
+          <img src="/logo.png" alt="Nishchal KC logo" className="h-9 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">

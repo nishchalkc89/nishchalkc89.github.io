@@ -19,6 +19,7 @@ const columns: { title: string; links: { name: string; href: string; external?: 
       { name: 'Projects', href: '#work' },
       { name: 'Toolbox', href: '#stack' },
       { name: 'Education', href: '#experience' },
+      { name: 'Photos', href: '#photos' },
       { name: 'Contact', href: '#contact' },
     ],
   },

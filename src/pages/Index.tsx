@@ -6,6 +6,7 @@ import { Work } from '@/components/sections/Work';
 import { Services } from '@/components/sections/Services';
 import { Stack } from '@/components/sections/Stack';
 import { Experience } from '@/components/sections/Experience';
+import { Gallery } from '@/components/sections/Gallery';
 import { Contact } from '@/components/sections/Contact';
 
 const Index = () => (
@@ -18,6 +19,7 @@ const Index = () => (
       <Services />
       <Stack />
       <Experience />
+      <Gallery />
       <Contact />
     </main>
     <Footer />

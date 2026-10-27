@@ -1,203 +1,90 @@
-import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { GraduationCap, Briefcase, Award, MapPin } from 'lucide-react';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { Briefcase, GraduationCap, type LucideIcon } from 'lucide-react';
+import { Section } from '@/components/Chain';
+import { Reveal, SectionHead } from '@/components/Reveal';
+import { education, work } from '@/data/site';
 
-const timeline = [
-  {
-    type: 'education',
-    title: 'B.Tech in Computer Science & Engineering',
-    organization: 'Sharda University',
-    location: 'Greater Noida, India',
-    period: '2022 - Present (4th Year)',
-    description: 'Pursuing Bachelor of Technology with focus on blockchain development, cybersecurity, and full-stack web development.',
-    icon: GraduationCap,
-    current: true,
-  },
- {
-  type: 'internship',
-  title: 'Full Stack Developer Intern',
-  organization: 'Verastix Technology Pvt. Ltd.',
-  location: 'Nepal',
-  period: 'June 2025 - July 2025',
-  description:
-    'Developed and implemented a Doctor Appointment Booking System, contributing to both frontend and backend development. Worked on building reliable, user-friendly features and ensured smooth data handling and system usability. Gained hands-on experience in full-stack development and real-world application deployment.',
-  icon: Briefcase,
-  current: false,
-  },
-  {
-  type: 'internship',
-  title: 'Data Analyst Intern',
-  organization: 'Sapivi Enterprise Pvt. Ltd.',
-  location: 'India',
-  period: 'June 2024 - August 2024',
-  description:
-    'Developed Python scripts to extract, clean, and organize large datasets from online sources. Worked with SQL and Excel to ensure data accuracy, reliability, and usability while automating data workflows for internal analysis.',
-  icon: Briefcase,
-  current: true,
-},
+type Item = (typeof work)[number];
 
-  {
-    type: 'education',
-    title: 'Higher Secondary Education (+2)',
-    organization: 'Gorkha Secondary School (GSS)',
-    location: 'Tulsipur, Dang, Nepal',
-    period: 'Completed',
-    description: 'Completed higher secondary education with focus on science and mathematics.',
-    icon: GraduationCap,
-    current: false,
-  },
-  {
-    type: 'education',
-    title: 'Secondary Education (SEE)',
-    organization: 'Mid West Point Academy',
-    location: 'Nepal',
-    period: 'Completed',
-    description: 'Completed secondary education examination with strong foundation in sciences.',
-    icon: GraduationCap,
-    current: false,
-  },
-];
+const ease = [0.22, 1, 0.36, 1] as const;
 
-const achievements = [
-  'Built 5+ full-stack projects with modern technologies',
-  'Specializing in blockchain security and smart contracts',
-  'Active contributor to open-source projects',
-  'Continuous learner in cybersecurity domain',
-];
-
-export const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+const Column = ({ title, icon: Icon, items, from }: { title: string; icon: LucideIcon; items: Item[]; from: -1 | 1 }) => {
+  const ref = useRef<HTMLOListElement>(null);
+  // the line fills as the column scrolls through the screen
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 70%', 'end 55%'] });
+  const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 28 });
+  const head = useTransform(progress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="experience" className="py-10 md:py-14 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      
-      <div className="section-container relative z-10">
-        <div ref={ref} className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+    <div className="panel h-full p-6 md:p-8">
+      <motion.div
+        className="flex items-center gap-3"
+        initial={{ opacity: 0, x: from * -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease }}
+      >
+        <span className="grid grid-cols-1 h-11 w-11 place-items-center rounded-xl grad-bg on-grad">
+          <Icon className="h-5 w-5" />
+        </span>
+        <h3 className="text-2xl">{title}</h3>
+      </motion.div>
+
+      <ol ref={ref} className="relative ml-1 mt-8 space-y-9 pl-7">
+        <span aria-hidden className="absolute bottom-0 left-0 top-1 w-px bg-foreground/15" />
+        <motion.span
+          aria-hidden
+          className="absolute bottom-0 left-0 top-1 w-px origin-top bg-gradient-to-b from-primary to-accent"
+          style={{ scaleY: progress }}
+        />
+        <motion.span
+          aria-hidden
+          className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-accent shadow-[0_0_14px_hsl(var(--accent))]"
+          style={{ top: head }}
+        />
+
+        {items.map((e, i) => (
+          <motion.li
+            key={e.role}
+            className="relative"
+            initial={{ opacity: 0, x: from * 36 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, delay: i * 0.08, ease }}
           >
-            <span className="text-primary font-mono text-sm mb-4 block">// Journey</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-              Education &{' '}
-              <span className="gradient-text">Experience</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              From Nepal to India, tracing my path in technology and innovation
-            </p>
-            <div className="cyber-line max-w-xs mx-auto mt-6" />
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Timeline */}
-            <div className="lg:col-span-2">
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-6 top-0 bottom-0 w-px bg-border" />
-                
-                <div className="space-y-8">
-                  {timeline.map((item, index) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, x: -30 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="relative pl-16"
-                    >
-                      {/* Timeline Dot */}
-                      <div className={`absolute left-4 top-1 timeline-dot ${item.current ? 'animate-pulse-glow' : ''}`} />
-                      
-                      {/* Card */}
-                      <div className="glass-card p-6 hover:border-primary/30 transition-colors">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <span className={`px-2 py-1 text-xs font-mono rounded ${
-                            item.type === 'education' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'
-                          }`}>
-                            {item.type === 'education' ? 'Education' : 'Internship'}
-                          </span>
-                          {item.current && (
-                            <span className="px-2 py-1 text-xs font-mono rounded bg-glow-green/10 text-glow-green flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 rounded-full bg-glow-green animate-pulse" />
-                              {/* Current */}
-                            </span>
-                          )}
-                        </div>
-                        
-                        <h3 className="text-lg font-display font-semibold text-foreground mb-1">
-                          {item.title}
-                        </h3>
-                        
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-3">
-                          <span className="font-medium text-foreground/80">{item.organization}</span>
-                          <span className="flex items-center gap-1">
-                            <MapPin className="w-3 h-3" />
-                            {item.location}
-                          </span>
-                        </div>
-                        
-                        <p className="text-sm text-muted-foreground">
-                          {item.description}
-                        </p>
-                        
-                        <div className="mt-3 text-xs font-mono text-primary">
-                          {item.period}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Achievements Sidebar */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="lg:sticky lg:top-24 self-start"
+            <motion.span
+              aria-hidden
+              className={`absolute -left-[34px] top-1.5 grid h-4 w-4 place-items-center rounded-full border-2 border-background ${i === 0 ? 'bg-accent' : 'bg-primary'}`}
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ type: 'spring', stiffness: 260, damping: 14, delay: 0.15 + i * 0.08 }}
             >
-              <div className="glass-card p-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                    <Award className="w-5 h-5 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-display font-semibold text-foreground">
-                    Highlights
-                  </h3>
-                </div>
-                
-                <ul className="space-y-4">
-                  {achievements.map((achievement, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      <span className="text-sm text-muted-foreground">{achievement}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 pt-6 border-t border-border">
-                  <p className="text-sm text-muted-foreground mb-2">Looking for</p>
-                  <p className="text-foreground font-medium">
-                    Internships & Full-time opportunities in Blockchain & Cybersecurity
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-    </section>
+              {i === 0 && <span className="pulse-dot absolute inset-0 rounded-full" />}
+            </motion.span>
+            <p className="font-mono text-xs text-accent">{e.period}</p>
+            <h4 className="mt-1.5 font-display text-lg font-semibold leading-snug">{e.role}</h4>
+            <p className="mt-0.5 text-sm text-muted-foreground">{e.place}</p>
+            <p className="mt-2.5 text-sm leading-relaxed text-foreground/70">{e.body}</p>
+          </motion.li>
+        ))}
+      </ol>
+    </div>
   );
 };
+
+export const Experience = () => (
+  <Section id="experience" flip className="py-20 md:py-28">
+    <SectionHead label="Education" title={<>Experience &amp; <span className="grad-text">education.</span></>} />
+
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+      <Reveal>
+        <Column title="Experience" icon={Briefcase} items={work} from={-1} />
+      </Reveal>
+      <Reveal delay={0.08}>
+        <Column title="Education" icon={GraduationCap} items={education} from={1} />
+      </Reveal>
+    </div>
+  </Section>
+);

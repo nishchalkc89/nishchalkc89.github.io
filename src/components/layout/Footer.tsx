@@ -1,89 +1,154 @@
-import { motion } from 'framer-motion';
-import { Shield, Github, Linkedin, Mail } from 'lucide-react';
+import { useState } from 'react';
+import { Github, Linkedin, Loader2, Mail, Send, Twitter } from 'lucide-react';
+import { toast } from 'sonner';
+import { projects, services, site } from '@/data/site';
 
-const socialLinks = [
-  { icon: Github, href: 'https://github.com/nishchalkc89', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/nishchalkc/', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:nishchalkc370@email.com', label: 'Email' },
+const socials = [
+  { icon: Github, href: site.github, label: 'GitHub' },
+  { icon: Linkedin, href: site.linkedin, label: 'LinkedIn' },
+  { icon: Twitter, href: site.x, label: 'X' },
+  { icon: Mail, href: `mailto:${site.email}`, label: 'Email' },
 ];
 
-const quickLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+const columns: { title: string; links: { name: string; href: string; external?: boolean }[] }[] = [
+  {
+    title: 'About me',
+    links: [
+      { name: 'Home', href: '#top' },
+      { name: 'About', href: '#about' },
+      { name: 'Projects', href: '#work' },
+      { name: 'Toolbox', href: '#stack' },
+      { name: 'Education', href: '#experience' },
+      { name: 'Contact', href: '#contact' },
+    ],
+  },
+  {
+    title: 'Services',
+    links: [
+      ...services.map((s) => ({ name: s.title, href: '#services' })),
+      { name: 'Smart contracts', href: '#services' },
+      { name: 'Landing pages', href: '#services' },
+      { name: 'Start a project', href: '#contact' },
+    ],
+  },
+  {
+    title: 'Recent work',
+    links: projects
+      .filter((p) => p.live)
+      .slice(0, 6)
+      .map((p) => ({ name: p.title, href: p.live as string, external: true })),
+  },
+  {
+    title: 'Connect',
+    links: [
+      { name: 'Email me', href: `mailto:${site.email}` },
+      { name: 'LinkedIn', href: site.linkedin, external: true },
+      { name: 'GitHub', href: site.github, external: true },
+      { name: 'X (Twitter)', href: site.x, external: true },
+      { name: `${site.location} · ${site.timeLabel}`, href: '#contact' },
+    ],
+  },
 ];
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [sending, setSending] = useState(false);
+
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    try {
+      const body = new URLSearchParams({ 'form-name': 'footer-contact', email }).toString();
+      const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+      if (!res.ok) throw new Error(String(res.status));
+      toast.success("Thanks! I'll get in touch soon.");
+      setEmail('');
+    } catch {
+      toast.error(`Couldn't send that. Please email me at ${site.email}`);
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
-    <footer className="relative py-8 border-t border-border/50">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-card/50 to-transparent" />
-      
-      <div className="section-container relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* Brand */}
-            <div>
-              <a href="#" className="flex items-center gap-2 text-xl font-display font-bold mb-4">
-                <Shield className="w-6 h-6 text-primary" />
-                <span className="gradient-text">Nishchal</span>
-                <span className="text-foreground">Kc</span>
-              </a>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Building secure, decentralized solutions for tomorrow's challenges. 
-                Passionate about blockchain technology and cybersecurity.
-              </p>
-            </div>
+    <footer className="relative border-t border-foreground/10 bg-card/80 backdrop-blur">
+      <div className="wrap py-14 md:py-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+          {/* brand, email box, socials */}
+          <div className="lg:col-span-4">
+            <a href="#top" aria-label="Nishchal KC, home" className="inline-block">
+              <img src="/logo.png" alt="NK" className="h-14 w-auto" />
+            </a>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Blockchain and full-stack projects for growing businesses. Have an idea? Be part of my client family!
+            </p>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-display font-semibold text-foreground mb-4">Quick Links</h4>
-              <nav className="space-y-2">
-                {quickLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </nav>
-            </div>
+            <form onSubmit={submit} className="mt-6 flex max-w-xs items-center gap-2">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email"
+                aria-label="Your email address"
+                className="h-12 w-full rounded-md border border-foreground/15 bg-background/60 px-4 text-sm placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              />
+              <button
+                type="submit"
+                disabled={sending}
+                aria-label="Send my email"
+                className="grid h-12 w-12 shrink-0 place-items-center rounded-md grad-bg on-grad transition-transform hover:scale-105 disabled:opacity-60"
+              >
+                {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+              </button>
+            </form>
 
-            {/* Social */}
-            <div>
-              <h4 className="font-display font-semibold text-foreground mb-4">Connect</h4>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
+            <ul className="mt-7 flex gap-3">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <li key={label}>
                   <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-muted/50 border border-border/50 hover:border-primary/30 hover:bg-primary/10 transition-all group"
-                    aria-label={social.label}
+                    href={href}
+                    target={href.startsWith('http') ? '_blank' : undefined}
+                    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    aria-label={label}
+                    className="grid h-10 w-10 place-items-center rounded-full bg-foreground/10 transition-colors hover:bg-accent hover:text-accent-foreground"
                   >
-                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <Icon className="h-[18px] w-[18px]" />
                   </a>
-                ))}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* link columns */}
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:col-span-8">
+            {columns.map((c) => (
+              <div key={c.title}>
+                <p className="text-sm font-semibold text-muted-foreground">{c.title}</p>
+                <ul className="mt-4 space-y-2.5">
+                  {c.links.map((l) => (
+                    <li key={l.name}>
+                      <a
+                        href={l.href}
+                        target={l.external ? '_blank' : undefined}
+                        rel={l.external ? 'noopener noreferrer' : undefined}
+                        className="text-[13px] leading-snug text-foreground/85 transition-colors hover:text-accent"
+                      >
+                        {l.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="pt-6 border-t border-border/50">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-              <p className="text-sm text-muted-foreground">
-                © {currentYear} Nishchal KC. All rights reserved.
-              </p>
-            </div>
-          </div>
+            ))}
+          </nav>
         </div>
+      </div>
+
+      <div className="border-t border-foreground/10">
+        <p className="wrap py-5 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} {site.name}. Designed and built by me in {site.location}.
+        </p>
       </div>
     </footer>
   );

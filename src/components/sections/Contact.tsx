@@ -1,227 +1,298 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Mail, MapPin, Send, Github, Linkedin, CheckCircle, Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from '@/hooks/use-toast';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUp, Clock, Github, Linkedin, Mail, MapPin, RotateCcw, Timer, Twitter } from 'lucide-react';
+import { useLocalTime } from '@/hooks/use-local-time';
+import { toast } from 'sonner';
+import { Section } from '@/components/Chain';
+import { Reveal } from '@/components/Reveal';
+import { site } from '@/data/site';
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'nishchalkc370@email.com',
-    href: 'mailto:nishchalkc@email.com',
-  },
-  {
-    icon: MapPin,
-    label: 'Location',
-    value: 'Greater Noida, India',
-    href: 'https://maps.app.goo.gl/owvWhirF9UYaT1ye7',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: 'github.com/nishchalkc89',
-    href: 'https://github.com/nishchalkc89',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/nishchalkc/',
-    href: 'https://www.linkedin.com/in/nishchalkc/',
-  },
+type Msg = { from: 'bot' | 'me'; text: string };
+type Step = 'type' | 'details' | 'name' | 'email' | 'sending' | 'done';
+
+const types = ['Smart contract', 'dApp', 'Website', 'UI design', 'Something else'];
+
+const greeting: Msg[] = [
+  { from: 'bot', text: "Hi, I'm Nishchal." },
+  { from: 'bot', text: 'What would you like to build?' },
 ];
 
+const socials = [
+  { icon: Mail, label: 'Email', href: `mailto:${site.email}` },
+  { icon: Linkedin, label: 'LinkedIn', href: site.linkedin },
+  { icon: Github, label: 'GitHub', href: site.github },
+  { icon: Twitter, label: 'X', href: site.x },
+];
+
+const Bubble = ({ m }: { m: Msg }) => (
+  <motion.div
+    layout
+    initial={{ opacity: 0, y: 14, scale: 0.97 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.35 }}
+    className={`flex items-end gap-2.5 ${m.from === 'me' ? 'justify-end' : 'justify-start'}`}
+  >
+    {m.from === 'bot' && <img src="/logo.png" alt="" className="mb-1 h-7 w-9 shrink-0 object-contain" />}
+    <p
+      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${
+        m.from === 'me' ? 'rounded-br-md grad-bg on-grad font-medium' : 'rounded-bl-md bg-foreground/[0.07] text-foreground'
+      }`}
+    >
+      {m.text}
+    </p>
+  </motion.div>
+);
+
 export const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const time = useLocalTime();
+  const [msgs, setMsgs] = useState<Msg[]>(greeting);
+  const [step, setStep] = useState<Step>('type');
+  const [typing, setTyping] = useState(false);
+  const [draft, setDraft] = useState('');
+  const [data, setData] = useState({ project: '', message: '', name: '', email: '' });
+  const box = useRef<HTMLDivElement>(null);
+  const timers = useRef<number[]>([]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+  // keep the newest message in view inside the chat only (never scrolls the page)
+  useEffect(() => {
+    box.current?.scrollTo({ top: box.current.scrollHeight, behavior: 'smooth' });
+  }, [msgs, typing]);
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
-    // Reset after a delay
-    setTimeout(() => setIsSubmitted(false), 3000);
+  const botSay = (text: string, next: Step) => {
+    setTyping(true);
+    timers.current.push(
+      window.setTimeout(() => {
+        setMsgs((m) => [...m, { from: 'bot', text }]);
+        setTyping(false);
+        setStep(next);
+      }, 750)
+    );
   };
 
+  const send = async (payload: typeof data) => {
+    setStep('sending');
+    try {
+      const body = new URLSearchParams({ 'form-name': 'contact', ...payload }).toString();
+      const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+      if (!res.ok) throw new Error(String(res.status));
+      botSay(`Thanks ${payload.name.split(' ')[0]}, your message is in. I'll reply to ${payload.email} within a day or two.`, 'done');
+    } catch {
+      toast.error(`Couldn't send that. Please email me at ${site.email}`);
+      botSay(`That didn't go through. Please email me directly at ${site.email}.`, 'done');
+    }
+  };
+
+  const answer = (text: string) => {
+    const value = text.trim();
+    if (!value) return;
+    setMsgs((m) => [...m, { from: 'me', text: value }]);
+    setDraft('');
+
+    if (step === 'type') {
+      setData((d) => ({ ...d, project: value }));
+      botSay('Nice. Tell me a little about it: what it should do, and any timeline or budget.', 'details');
+    } else if (step === 'details') {
+      setData((d) => ({ ...d, message: value }));
+      botSay('Got it. What is your name?', 'name');
+    } else if (step === 'name') {
+      setData((d) => ({ ...d, name: value }));
+      botSay(`Good to meet you, ${value.split(' ')[0]}. What is the best email to reach you on?`, 'email');
+    } else if (step === 'email') {
+      if (!/^\S+@\S+\.\S+$/.test(value)) {
+        botSay("That doesn't look like an email address. Could you check it?", 'email');
+        return;
+      }
+      const payload = { ...data, email: value };
+      setData(payload);
+      void send(payload);
+    }
+  };
+
+  const restart = () => {
+    timers.current.forEach(clearTimeout);
+    setMsgs(greeting);
+    setStep('type');
+    setTyping(false);
+    setDraft('');
+    setData({ project: '', message: '', name: '', email: '' });
+  };
+
+  const busy = typing || step === 'sending';
+  const placeholder = { details: 'Describe your project…', name: 'Your name', email: 'you@example.com' }[step as 'details' | 'name' | 'email'];
+
   return (
-    <section id="contact" className="py-10 md:py-14 relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
-      <div className="section-container relative z-10">
-        <div ref={ref} className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="text-primary font-mono text-sm mb-4 block">// Get In Touch</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-              Let's Build Something{' '}
-              <span className="gradient-text">Together</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Interested in collaborating or have a project in mind? Feel free to reach out!
-            </p>
-            <div className="cyber-line max-w-xs mx-auto mt-6" />
-          </motion.div>
+    <Section id="contact" className="py-24 md:py-32">
+      <div className="grid grid-cols-1 items-stretch gap-14 lg:grid-cols-12 lg:gap-16">
+        {/* left: who I am and how to reach me */}
+        <Reveal className="lg:col-span-5">
+          <p className="eyebrow flex items-center gap-3 text-accent">
+            <span className="h-px w-8 grad-bg" />
+            Contact
+          </p>
+          <h2 className="mt-5 text-5xl leading-[1.02] md:text-6xl text-balance">
+            Let's <span className="grad-text">talk.</span>
+          </h2>
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
+            Have a smart contract, a web product or a design in mind? Answer a few quick questions in the chat and your message
+            reaches me right away.
+          </p>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <form onSubmit={handleSubmit} className="glass-card p-6 md:p-8 space-y-6">
-                <div className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="text-sm font-medium text-foreground mb-2 block">
-                      Name
-                    </label>
-                    <Input
-                      id="name"
-                      placeholder="Your name"
-                      required
-                      className="bg-muted/50 border-border focus:border-primary"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="text-sm font-medium text-foreground mb-2 block">
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      required
-                      className="bg-muted/50 border-border focus:border-primary"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="subject" className="text-sm font-medium text-foreground mb-2 block">
-                      Subject
-                    </label>
-                    <Input
-                      id="subject"
-                      placeholder="Project collaboration"
-                      required
-                      className="bg-muted/50 border-border focus:border-primary"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="text-sm font-medium text-foreground mb-2 block">
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell me about your project or just say hi..."
-                      rows={5}
-                      required
-                      className="bg-muted/50 border-border focus:border-primary resize-none"
-                    />
-                  </div>
-                </div>
+          <div className="mt-8 flex items-center gap-4">
+            <img src="/nishchal.jpg" alt="Nishchal KC" loading="lazy" className="h-20 w-20 rounded-full object-cover object-top ring-2 ring-accent/60 ring-offset-4 ring-offset-background" />
+            <div>
+              <p className="font-display text-xl font-semibold">{site.name}</p>
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="pulse-dot h-2 w-2 rounded-full bg-accent" /> Available for freelance
+              </p>
+            </div>
+          </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full btn-glow"
-                  disabled={isSubmitting || isSubmitted}
+          <ul className="mt-9 divide-y divide-foreground/10 border-y border-foreground/10">
+            <li className="flex items-center gap-4 py-4">
+              <MapPin className="h-5 w-5 text-accent" />
+              <span className="text-sm text-muted-foreground">Based in</span>
+              <span className="ml-auto font-medium">{site.location}</span>
+            </li>
+            <li className="flex items-center gap-4 py-4">
+              <Clock className="h-5 w-5 text-accent" />
+              <span className="text-sm text-muted-foreground">Local time</span>
+              <span className="ml-auto font-medium">{time || '--:--'} {site.timeLabel}</span>
+            </li>
+            <li className="flex items-center gap-4 py-4">
+              <Timer className="h-5 w-5 text-accent" />
+              <span className="text-sm text-muted-foreground">Reply time</span>
+              <span className="ml-auto font-medium">1–2 days</span>
+            </li>
+          </ul>
+
+          <p className="mt-8 text-sm text-muted-foreground">Prefer to write directly?</p>
+          <ul className="mt-3 flex flex-wrap gap-2.5">
+            {socials.map(({ icon: Icon, label, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-4 py-2 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Sending...
-                    </>
-                  ) : isSubmitted ? (
-                    <>
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Message Sent!
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            </motion.div>
+                  <Icon className="h-4 w-4" /> {label === 'Email' ? site.email : label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-6"
-            >
-              <div className="glass-card p-6 md:p-8">
-                <h3 className="text-xl font-display font-semibold text-foreground mb-6">
-                  Contact Information
-                </h3>
-                
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.a
-                      key={info.label}
-                      href={info.href}
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                      className="flex items-center gap-4 group"
-                    >
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <info.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">{info.label}</p>
-                        <p className="text-foreground font-medium group-hover:text-primary transition-colors">
-                          {info.value}
-                        </p>
-                      </div>
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quick Message */}
-              <div className="glass-card p-6 bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20">
-                <p className="text-lg text-foreground font-medium mb-2">
-                  "Let's innovate together!"
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  I'm always open to discussing new projects, creative ideas, or opportunities 
-                  to be part of your vision. Whether you have a question or just want to say hi, 
-                  my inbox is always open.
-                </p>
-              </div>
-            </motion.div>
+        {/* right: the chat */}
+        <Reveal delay={0.1} className="flex lg:col-span-7">
+        <div className="panel flex min-h-[30rem] flex-1 flex-col p-5 md:p-7">
+        {/* chat header */}
+        <div className="flex items-center gap-3 border-b border-foreground/10 pb-4">
+          <span className="grid h-11 w-11 place-items-center rounded-full bg-foreground/[0.06]">
+            <img src="/logo.png" alt="" className="h-6 w-8 object-contain" />
+          </span>
+          <div>
+            <p className="font-display text-base font-semibold leading-none">{site.name}</p>
+            <p className="mt-1.5 flex items-center gap-1.5 text-xs text-muted-foreground">
+              <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" /> Online · replies within 1–2 days
+            </p>
           </div>
         </div>
+
+        {/* conversation */}
+        <div ref={box} className="flex min-h-[12rem] flex-1 flex-col overflow-y-auto py-5" aria-live="polite">
+          <div className="mt-auto space-y-3">
+          {msgs.map((m, i) => (
+            <Bubble key={i} m={m} />
+          ))}
+          <AnimatePresence>
+            {typing && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-end gap-2.5">
+                <img src="/logo.png" alt="" className="mb-1 h-7 w-9 shrink-0 object-contain" />
+                <span className="flex gap-1.5 rounded-2xl rounded-bl-md bg-foreground/[0.07] px-4 py-3.5" aria-label="Typing">
+                  {[0, 1, 2].map((d) => (
+                    <span key={d} className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground" style={{ animationDelay: `${d * 150}ms` }} />
+                  ))}
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          </div>
+        </div>
+
+        {/* answer area */}
+        <div className="border-t border-foreground/10 pt-5">
+          {step === 'type' && !busy && (
+            <div className="flex flex-wrap justify-end gap-2">
+              {types.map((t) => (
+                <button
+                  key={t}
+                  onClick={() => answer(t)}
+                  className="rounded-full border border-foreground/20 px-4 py-2 text-sm font-medium transition-colors hover:border-transparent hover:bg-accent hover:text-accent-foreground"
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {(step === 'details' || step === 'name' || step === 'email') && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!busy) answer(draft);
+              }}
+              className="flex items-end gap-3"
+            >
+              {step === 'details' ? (
+                <textarea
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      if (!busy) answer(draft);
+                    }
+                  }}
+                  rows={3}
+                  autoFocus={false}
+                  placeholder={placeholder}
+                  aria-label="Your answer"
+                  className="w-full resize-none rounded-2xl border border-foreground/20 bg-background/70 px-4 py-3 text-base placeholder:text-muted-foreground/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                />
+              ) : (
+                <input
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                  type={step === 'email' ? 'email' : 'text'}
+                  placeholder={placeholder}
+                  aria-label="Your answer"
+                  autoComplete={step === 'email' ? 'email' : 'name'}
+                  className="h-12 w-full rounded-full border border-foreground/20 bg-background/70 px-5 text-base placeholder:text-muted-foreground/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                />
+              )}
+              <button
+                type="submit"
+                disabled={busy || !draft.trim()}
+                aria-label="Send"
+                className="grid h-12 w-12 shrink-0 place-items-center rounded-full grad-bg on-grad transition-transform hover:scale-105 disabled:opacity-40"
+              >
+                <ArrowUp className="h-5 w-5" />
+              </button>
+            </form>
+          )}
+
+          {step === 'done' && !busy && (
+            <div className="text-center">
+              <button onClick={restart} className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-4 py-2 text-sm font-medium transition-colors hover:border-accent hover:text-accent">
+                <RotateCcw className="h-4 w-4" /> Send another message
+              </button>
+            </div>
+          )}
+        </div>
+        </div>
+        </Reveal>
       </div>
-    </section>
+    </Section>
   );
 };

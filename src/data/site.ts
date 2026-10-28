@@ -7,6 +7,9 @@ export const site = {
   github: 'https://github.com/nishchalkc89',
   linkedin: 'https://www.linkedin.com/in/nishchalkc/',
   x: 'https://x.com/nishchalkc89',
+  instagram: 'https://www.instagram.com/k_nishchal07/',
+  facebook: 'https://www.facebook.com/niscala.ke.si.2025/',
+  tiktok: 'https://www.tiktok.com/@khatri_nishchal',
 };
 
 export const services = [

@@ -1,12 +1,23 @@
 import { useState } from 'react';
-import { Github, Linkedin, Loader2, Mail, Send, Twitter } from 'lucide-react';
+import { Facebook, Github, Instagram, Linkedin, Loader2, Mail, Send, Twitter } from 'lucide-react';
+import { siTiktok } from 'simple-icons';
 import { toast } from 'sonner';
 import { projects, services, site } from '@/data/site';
+
+// TikTok has no icon in the icon set used for the others, so it is drawn from its own logo path
+const TikTok = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+    <path d={siTiktok.path} />
+  </svg>
+);
 
 const socials = [
   { icon: Github, href: site.github, label: 'GitHub' },
   { icon: Linkedin, href: site.linkedin, label: 'LinkedIn' },
   { icon: Twitter, href: site.x, label: 'X' },
+  { icon: Instagram, href: site.instagram, label: 'Instagram' },
+  { icon: Facebook, href: site.facebook, label: 'Facebook' },
+  { icon: TikTok, href: site.tiktok, label: 'TikTok' },
   { icon: Mail, href: `mailto:${site.email}`, label: 'Email' },
 ];
 
@@ -45,6 +56,9 @@ const columns: { title: string; links: { name: string; href: string; external?: 
       { name: 'LinkedIn', href: site.linkedin, external: true },
       { name: 'GitHub', href: site.github, external: true },
       { name: 'X (Twitter)', href: site.x, external: true },
+      { name: 'Instagram', href: site.instagram, external: true },
+      { name: 'Facebook', href: site.facebook, external: true },
+      { name: 'TikTok', href: site.tiktok, external: true },
       { name: `${site.location} · ${site.timeLabel}`, href: '#contact' },
     ],
   },
@@ -103,7 +117,7 @@ export const Footer = () => {
               </button>
             </form>
 
-            <ul className="mt-7 flex gap-3">
+            <ul className="mt-7 flex flex-wrap gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <li key={label}>
                   <a

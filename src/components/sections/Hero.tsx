@@ -73,7 +73,7 @@ export const Hero = () => {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground"
             >
-              I'm Nishchal. I write smart contracts, build the web apps around them and design the interfaces people actually use,
+              I'm Nishchal KC, a blockchain engineer. I write smart contracts, build the web apps around them and design the interfaces people actually use,
               from first sketch to mainnet-ready launch.
             </motion.p>
 

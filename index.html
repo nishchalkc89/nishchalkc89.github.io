@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050a14" />
 
+    <script>
+      // The site lives on nishchalkc.com.np. A copy opened from github.io is sent to the real address.
+      if (location.hostname.slice(-10) === ".github.io") {
+        location.replace("https://nishchalkc.com.np" + location.pathname + location.search + location.hash);
+      }
+    </script>
+
     <title>Nishchal KC | Blockchain Engineer &amp; Full-Stack Developer</title>
     <meta name="description" content="Nishchal KC is a blockchain engineer and full-stack developer from Nepal, building Solidity smart contracts, React web apps and clean UI. Available to hire." />
     <meta name="keywords" content="Nishchal KC, Nishchal KC blockchain engineer, Nishchal KC developer, blockchain engineer Nepal, freelance blockchain developer, full stack developer Nepal, Solidity developer, smart contract developer, React developer, web3 developer, hire developer Nepal" />
@@ -33,8 +40,10 @@
     <meta name="twitter:image" content="https://nishchalkc.com.np/og-image.png" />
     <meta name="twitter:image:alt" content="Nishchal KC, blockchain and full-stack developer from Nepal" />
 
-    <link rel="icon" href="/logo.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -82,6 +91,7 @@
             "@id": "https://nishchalkc.com.np/#website",
             "url": "https://nishchalkc.com.np/",
             "name": "Nishchal KC",
+            "alternateName": ["Nishchal KC Portfolio", "nishchalkc.com.np"],
             "inLanguage": "en",
             "publisher": { "@id": "https://nishchalkc.com.np/#person" }
           },

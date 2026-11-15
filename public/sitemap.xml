@@ -65,5 +65,20 @@
       <image:title>Divya Kunj Academy website</image:title>
       <image:caption>Divya Kunj Academy school website, built by Nishchal KC</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/awesh-portfolio.jpg</image:loc>
+      <image:title>Awesh Portfolio website</image:title>
+      <image:caption>Awesh Portfolio, a creative designer portfolio website, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/aurora-roast.jpg</image:loc>
+      <image:title>Aurora Roast Café website</image:title>
+      <image:caption>Aurora Roast Caf&#233;, a coffee house website, built by Nishchal KC</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nishchalkc.com.np/projects/debit-kc.jpg</image:loc>
+      <image:title>Debit KC health assistant website</image:title>
+      <image:caption>Debit KC, a health assistant personal website, built by Nishchal KC</image:caption>
+    </image:image>
   </url>
 </urlset>

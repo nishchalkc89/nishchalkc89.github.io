@@ -111,6 +111,33 @@ export const projects: Project[] = [
     highlight: 'Client project',
   },
   {
+    title: 'Awesh Portfolio',
+    kind: 'Web & design',
+    blurb: 'Portfolio website for Md. Awesh Shekh, a Kathmandu-based creative designer, showing his graphic design, photo and video editing, 3D modeling and digital marketing work.',
+    stack: ['Next.js', 'TypeScript', 'CSS'],
+    image: '/projects/awesh-portfolio.jpg',
+    live: 'https://awesh-portfolio-phi.vercel.app/',
+    github: 'https://github.com/nishchalkc89/Awesh_portfolio',
+  },
+  {
+    title: 'Aurora Roast Café',
+    kind: 'Web & design',
+    blurb: 'Website for a small-batch, direct-trade coffee house, with photo-led storytelling, smooth motion and a table-reservation button.',
+    stack: ['Next.js', 'Tailwind CSS', 'GSAP', 'Framer Motion'],
+    image: '/projects/aurora-roast.jpg',
+    live: 'https://cafe-delta-mauve.vercel.app/',
+    github: 'https://github.com/nishchalkc89/cafe',
+  },
+  {
+    title: 'Debit KC, Health Assistant',
+    kind: 'Web & design',
+    blurb: 'Personal website for a certified health assistant, with an introduction, reviews and a clear make-an-appointment button.',
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    image: '/projects/debit-kc.jpg',
+    live: 'https://nishchalkc89.github.io/Debitkc/',
+    github: 'https://github.com/nishchalkc89/Debitkc',
+  },
+  {
     title: 'Blockchain Exam System',
     kind: 'Blockchain',
     blurb:

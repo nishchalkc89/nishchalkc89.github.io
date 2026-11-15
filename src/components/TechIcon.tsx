@@ -1,9 +1,9 @@
 import {
-  siCss, siDocker, siEthereum, siFigma, siFramer, siGit, siGithub, siGo, siHtml5, siIpfs, siJavascript,
+  siDocker, siEthereum, siFigma, siFramer, siGit, siGithub, siGo, siHtml5, siIpfs, siJavascript,
   siMysql, siNetlify, siNodedotjs, siPython, siReact, siSolidity, siSupabase, siTailwindcss, siTypescript,
   siVercel, siWeb3dotjs,
 } from 'simple-icons';
-import { Blocks, Hammer, Wallet, type LucideIcon } from 'lucide-react';
+import { Blocks } from 'lucide-react';
 
 type Brand = { title: string; path: string; hex: string };
 
@@ -18,7 +18,6 @@ const brands: Record<string, Brand> = {
   'Tailwind CSS': siTailwindcss,
   'Framer Motion': { ...siFramer, hex: '0055FF' },
   HTML5: siHtml5,
-  CSS3: { ...siCss, hex: '3A8FE0' },
   'Node.js': siNodedotjs,
   Python: siPython,
   Go: siGo,
@@ -32,17 +31,25 @@ const brands: Record<string, Brand> = {
   Figma: siFigma,
 };
 
-/** brand colours for tools that have no logo in the icon set */
-const fallback: Record<string, { Icon: LucideIcon; hex: string }> = {
-  Hardhat: { Icon: Hammer, hex: 'F7D51D' },
-  Truffle: { Icon: Blocks, hex: 'C9A27E' },
-  MetaMask: { Icon: Wallet, hex: 'F6851B' },
+/**
+ * Official full-colour logos for tools the icon set does not have, or draws differently.
+ * Hardhat, MetaMask and CSS3 are their own project and standards logos; Truffle is from trufflesuite.com.
+ */
+const logoFiles: Record<string, string> = {
+  Hardhat: '/tech/hardhat.svg',
+  MetaMask: '/tech/metamask.svg',
+  Truffle: '/tech/truffle.png',
+  CSS3: '/tech/css3.svg',
 };
 
 /** logos that are (near) black or white by brand follow the theme text colour so they stay visible */
 const adaptive = new Set(['Solidity', 'GitHub', 'Vercel']);
 
 export const TechIcon = ({ name, className = 'h-7 w-7' }: { name: string; className?: string }) => {
+  const file = logoFiles[name];
+  if (file) {
+    return <img src={file} alt={name} className={`${className} object-contain`} loading="lazy" decoding="async" />;
+  }
   const b = brands[name];
   if (b) {
     return (
@@ -52,7 +59,5 @@ export const TechIcon = ({ name, className = 'h-7 w-7' }: { name: string; classN
       </svg>
     );
   }
-  const f = fallback[name];
-  const Icon = f?.Icon ?? Blocks;
-  return <Icon aria-label={name} className={className} strokeWidth={1.7} style={{ color: `#${f?.hex ?? '9CA3AF'}` }} />;
+  return <Blocks aria-label={name} className={className} strokeWidth={1.7} style={{ color: '#9CA3AF' }} />;
 };

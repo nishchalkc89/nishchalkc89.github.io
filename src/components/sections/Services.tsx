@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight, Database, Monitor, Server, type LucideIcon } from 'lucide-react';
 import { ChainArt, Section } from '@/components/Chain';
 import { Reveal, SectionHead } from '@/components/Reveal';
 import { process, services } from '@/data/site';
+import { services as servicePages, urls } from '@/content';
 
 const Chips = ({ items }: { items: string[] }) => (
   <ul className="flex flex-wrap gap-2">
@@ -41,6 +43,7 @@ export const Services = () => {
             <div className="relative z-10 flex flex-col md:h-full">
               <Title n="01" t={chain.title} d={chain.body} />
               <div className="mt-6"><Chips items={chain.items} /></div>
+              <Link to={urls.service(servicePages[0].slug)} className="relative z-10 mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">Learn more <ArrowRight className="h-4 w-4" /></Link>
             </div>
             <ChainArt className="pointer-events-none mt-6 aspect-[740/340] h-auto w-full md:absolute md:-bottom-2 md:-right-2 md:mt-0 md:w-[60%]" />
           </article>
@@ -74,6 +77,7 @@ export const Services = () => {
               </div>
             </div>
             <Chips items={full.items} />
+            <Link to={urls.service(servicePages[1].slug)} className="relative z-10 mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">Learn more <ArrowRight className="h-4 w-4" /></Link>
           </article>
         </Reveal>
 
@@ -90,6 +94,7 @@ export const Services = () => {
               </div>
             </div>
             <Chips items={design.items} />
+            <Link to={urls.service(servicePages[2].slug)} className="relative z-10 mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">Learn more <ArrowRight className="h-4 w-4" /></Link>
           </article>
         </Reveal>
 

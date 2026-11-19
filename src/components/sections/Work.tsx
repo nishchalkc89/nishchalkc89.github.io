@@ -1,4 +1,6 @@
-import { ArrowUpRight, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight, Github } from 'lucide-react';
+import { caseStudies, urls } from '@/content';
 import { Laptop } from '@/components/Laptop';
 import { Section } from '@/components/Chain';
 import { Reveal, SectionHead } from '@/components/Reveal';
@@ -32,8 +34,11 @@ const Row = ({ p, i }: { p: Project; i: number }) => {
           </ul>
 
           <div className="mt-8 flex items-center gap-3">
+            <Link to={urls.project(caseStudies[i].slug)} className="inline-flex h-12 items-center gap-2 rounded-full border border-foreground/20 px-6 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">
+              Case study <ArrowRight className="h-4 w-4" />
+            </Link>
             {p.live ? (
-              <a href={p.live} target="_blank" rel="noopener noreferrer" className="group/btn inline-flex h-12 items-center gap-2 rounded-full grad-bg px-6 text-sm font-semibold on-grad transition-transform hover:scale-[1.04]">
+              <a href={p.live} target="_blank" rel="noopener noreferrer" className="group/btn inline-flex h-12 items-center gap-2 rounded-full border border-foreground/15 px-6 text-sm font-semibold on-grad transition-transform hover:scale-[1.04]">
                 Visit site <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
               </a>
             ) : (

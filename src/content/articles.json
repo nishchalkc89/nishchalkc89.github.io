@@ -1,0 +1,217 @@
+[
+  {
+    "slug": "smart-contract-development-cost",
+    "title": "How much does a smart contract or dApp project cost?",
+    "metaTitle": "Smart Contract & dApp Project Cost: What Decides It",
+    "metaDescription": "What really changes the cost of a smart contract or dApp project: scope, testing, front-end, audits and network fees, and how to get an accurate quote.",
+    "date": "2026-11-19",
+    "minutes": 5,
+    "service": "blockchain-development",
+    "intro": "Almost everyone who contacts a blockchain developer asks the same first question: how much will it cost? The honest answer is that it depends, but it depends on a short list of things you can understand and plan for.",
+    "blocks": [
+      { "h2": "The five things that decide the price" },
+      { "ol": [
+        "Scope of the contract. A contract with three functions and one role is a very different job from one with several roles, payment rules and upgrade paths.",
+        "Whether you need a front-end. A contract alone can be tested from a script, but most products also need a website or app with wallet sign-in. That is a separate piece of work.",
+        "Depth of testing. The more value the contract will hold, the more test cases and review it deserves.",
+        "Integrations. Storing files on IPFS, reading prices from other services or connecting to your existing database all add work.",
+        "Timeline. A tight deadline usually means more parallel effort and a higher price."
+      ] },
+      { "h2": "Costs that are not the developer's fee" },
+      { "p": "Deploying a contract to a live network costs network fees, often called gas. These are paid to the network, not to the developer, and they change with how busy the network is and how large the contract is. Plan for them separately, and deploy to a test network first so mistakes are free." },
+      { "p": "If the contract will hold significant value, budget for an independent security audit by a specialist firm. A developer who writes the code should not be the only person who reviews it." },
+      { "h2": "How to get an accurate quote" },
+      { "ul": [
+        "Write down, in plain language, what should happen on-chain. For example: a voter can vote once, and anyone can see the tally.",
+        "List who the users are and what each can do.",
+        "Say which blockchain you want, or ask for advice if you are unsure.",
+        "Say whether you need a website or app, and roughly how many screens.",
+        "Share your deadline and whether the project is a proof of concept or a live product."
+      ] },
+      { "p": "With that list, a developer can break the work into pieces and give you a range rather than a guess. Be wary of anyone who quotes a fixed price before asking a single question." },
+      { "h2": "Start small" },
+      { "p": "If you are unsure, build a small first version that does one thing well, test it with real users, and expand. It costs less, teaches you more and reduces the risk of building something nobody needs." }
+    ]
+  },
+  {
+    "slug": "hire-a-blockchain-developer-checklist",
+    "title": "Before you hire a blockchain developer: a 10-point checklist",
+    "metaTitle": "Hiring a Blockchain Developer: 10-Point Checklist",
+    "metaDescription": "A practical checklist for hiring a freelance blockchain developer: what to ask, what to look for in past work, and how to avoid common mistakes.",
+    "date": "2026-11-19",
+    "minutes": 5,
+    "service": "blockchain-development",
+    "intro": "Hiring for blockchain work is harder than hiring for a normal website, because mistakes in a smart contract can be permanent. Use this checklist before you sign anything.",
+    "blocks": [
+      { "h2": "The checklist" },
+      { "ol": [
+        "Do you actually need a blockchain? If a normal database would do, a good developer will say so.",
+        "Ask to see real, working projects, not only code snippets. Open them and try them.",
+        "Ask which networks and languages they use. Solidity for Ethereum and compatible networks is the most common.",
+        "Ask how they test contracts, and whether they deploy to a test network first.",
+        "Ask how they handle security: access control, input checks and known attack patterns.",
+        "Check whether they can build the front-end too, or whether you need a second person.",
+        "Ask what they hand over at the end: code, setup notes, deployment steps and a walkthrough.",
+        "Agree milestones and payments up front, tied to things you can see working.",
+        "Plan an independent audit if the contract will hold meaningful value.",
+        "Make sure you own the code and keys. You should control the wallets and deployment accounts, not the developer."
+      ] },
+      { "h2": "Red flags" },
+      { "ul": [
+        "Promises of guaranteed profit or returns. That is not software development.",
+        "A fixed price quoted before any questions are asked.",
+        "No live examples, or examples that cannot be opened.",
+        "Reluctance to let you own the code or the accounts."
+      ] },
+      { "h2": "What good looks like" },
+      { "p": "A good blockchain developer asks questions first, explains trade-offs in plain language, tells you when you do not need a blockchain, shows working examples and gives you a clear plan with milestones. If you can follow the explanation, you can trust the process." }
+    ]
+  },
+  {
+    "slug": "how-qr-code-printing-service-works",
+    "title": "How a QR-code printing service works, and why it beats sending files over chat",
+    "metaTitle": "How a QR-Code Printing Service Works (PrintCloud)",
+    "metaDescription": "How a QR-code print service works: scan, upload, pay and print automatically. Lessons from building PrintCloud for print shops in Nepal.",
+    "date": "2026-11-19",
+    "minutes": 5,
+    "service": "full-stack-development",
+    "intro": "In many print shops, a customer sends a file over a chat app, the shopkeeper opens it, fixes the settings, asks for payment and then prints. It works, but it is slow and files stay on someone's phone. PrintCloud, a service I built for Nepal, replaces that with a flow the customer controls.",
+    "blocks": [
+      { "h2": "The flow, step by step" },
+      { "ol": [
+        "The customer scans the shop's QR code with their phone camera.",
+        "The code opens that shop's upload page. No account or app download is needed.",
+        "They upload a document. Common types such as PDF, DOC, JPG and PNG are supported.",
+        "They pay with eSewa, a wallet many people in Nepal already use.",
+        "The print job goes to the shop's printer automatically, with no manual steps."
+      ] },
+      { "h2": "Why it works better" },
+      { "ul": [
+        "No waiting. The shopkeeper does not have to open and fix each file.",
+        "Fewer mistakes. The customer sees what they are sending before it prints.",
+        "Payment is settled before printing, so the shop is not left with unpaid jobs.",
+        "Privacy. Files can be removed automatically once the job is done, instead of living in a chat history."
+      ] },
+      { "h2": "Design choices that matter" },
+      { "p": "A service like this lives or dies on how little effort it asks of the customer. A QR code means nothing to install. A mobile-first upload page means it works on any phone. Offering an installable web app means regulars can add it to their home screen." },
+      { "p": "On the shop's side, the main promise is that printing is automatic. Anything that needs the shopkeeper to intervene defeats the purpose." },
+      { "h2": "What to think about if you build something similar" },
+      { "ul": [
+        "File privacy: decide how long files are kept and make deletion automatic.",
+        "Payment confirmation: only release the print job once payment is confirmed.",
+        "Printer connectivity: shops have many different printers, so plan how jobs reach them.",
+        "Failure handling: what happens if the printer is offline or the file will not open."
+      ] },
+      { "p": "If you run a print shop or want a similar service built for another kind of business, I can help you scope it." }
+    ]
+  },
+  {
+    "slug": "progressive-web-apps-for-small-businesses",
+    "title": "Progressive web apps for small businesses: what they are and when to use one",
+    "metaTitle": "Progressive Web Apps for Small Businesses Explained",
+    "metaDescription": "What a progressive web app (PWA) is, how it differs from a normal website and a native app, and when a small business should choose one.",
+    "date": "2026-11-19",
+    "minutes": 5,
+    "service": "full-stack-development",
+    "intro": "A progressive web app, or PWA, is a website that behaves like an app. Visitors can add it to their phone's home screen, it opens in its own window and it can keep working when the connection is weak. I have built two: Delight Shopping Mart and NextOwner.",
+    "blocks": [
+      { "h2": "PWA, website and native app compared" },
+      { "ul": [
+        "A normal website is found through search and opened in a browser tab. It is the cheapest to build and the easiest to share.",
+        "A native app is downloaded from an app store. It can use every feature of the phone, but it costs more to build and maintain, and people must find and install it.",
+        "A PWA sits in between. It is found like a website, and can then be installed like an app, without going through an app store."
+      ] },
+      { "h2": "Why a small business might choose a PWA" },
+      { "ul": [
+        "One codebase works on phones, tablets and computers.",
+        "Customers can install it in a few taps, with no store account needed.",
+        "It opens quickly and feels like an app, which suits repeat customers such as a local supermarket.",
+        "Updates reach everyone at once, without waiting for store approval.",
+        "It can be searched on Google like a website."
+      ] },
+      { "h2": "When a PWA is not the right choice" },
+      { "ul": [
+        "You need deep access to phone hardware or features that browsers do not offer.",
+        "Your customers expect to find you in an app store.",
+        "You only need a small information site. A normal website is simpler."
+      ] },
+      { "h2": "A real example" },
+      { "p": "Delight Shopping Mart is an online supermarket for two towns in Nepal. Customers browse categories, add products to a cart and order for home delivery. Offering it as an installable web app means regulars keep it one tap away on their phone without visiting an app store." },
+      { "p": "NextOwner, a campus marketplace for students, works the same way: students list and find items, and add the app to their home screen." },
+      { "h2": "How to decide" },
+      { "p": "Ask whether your customers will return often. If yes, a PWA is worth it. If they visit once, a fast, well-built website is enough. If you are not sure, start with the website and add the PWA features later." }
+    ]
+  },
+  {
+    "slug": "hire-freelance-developer-from-nepal",
+    "title": "Hiring a freelance developer from Nepal: time zones, communication and process",
+    "metaTitle": "Hiring a Freelance Developer from Nepal: A Guide",
+    "metaDescription": "A practical guide for international clients hiring a freelance developer in Nepal: time zone overlap, communication, scoping, milestones and handover.",
+    "date": "2026-11-19",
+    "minutes": 5,
+    "service": "full-stack-development",
+    "intro": "Many clients overseas work with developers in Nepal. Done well, it works smoothly. This guide covers what to expect and how to set up a project so distance does not get in the way. I am a freelance developer based in Nepal, so this comes from my own side of the table.",
+    "blocks": [
+      { "h2": "Time zones" },
+      { "p": "Nepal Time is UTC+5:45, so a typical working day in Nepal starts during the late afternoon in the UK and the middle of the night in North America. Some overlap is easy with the UK, Europe, the Middle East, India and Australia. With the Americas, plan one fixed overlap slot per week for calls and rely on written updates for the rest." },
+      { "h2": "Communication that works" },
+      { "ul": [
+        "Choose one main channel, such as email or a team chat, and keep decisions in writing.",
+        "Agree a regular update, for example a short summary at the end of each week.",
+        "Use screen recordings or a staging link to show progress instead of long descriptions.",
+        "Put questions in one list so they can be answered together."
+      ] },
+      { "h2": "Scope the work before it starts" },
+      { "p": "Most problems on remote projects come from unclear scope, not from distance. Before work begins, agree on a one-page brief: the goal, the users, the must-have features for the first version, and what is out of scope." },
+      { "h2": "Milestones and payment" },
+      { "p": "Break the project into milestones that each produce something you can see working. Agree the payment method, currency and schedule up front, before any work is done, and tie each payment to a milestone." },
+      { "h2": "Ownership and handover" },
+      { "ul": [
+        "You should own the code, the domain and the hosting accounts.",
+        "Ask for the code in a repository you control.",
+        "Ask for setup notes and a short walkthrough at the end.",
+        "Agree what support is included after launch."
+      ] },
+      { "h2": "What to look for in a developer" },
+      { "p": "Look for working examples you can open, clear written English, a defined process and honest answers when something is not possible. You can see my own projects, process and way of working on this site, and you are welcome to contact me with a short description of what you need." }
+    ]
+  },
+  {
+    "slug": "blockchain-voting-explained",
+    "title": "Blockchain voting explained: how it works and where it falls short",
+    "metaTitle": "Blockchain Voting Explained: How It Works and Limits",
+    "metaDescription": "How blockchain voting works, what it does well, such as an auditable tally, and where it falls short: identity, privacy and trust. With a real project example.",
+    "date": "2026-11-19",
+    "minutes": 6,
+    "service": "blockchain-development",
+    "intro": "Blockchain voting sounds like the obvious fix for election problems. It is useful, but only for some of them. Here is a plain explanation of how it works and where it does not help. I built a blockchain voting app as a student project, so I have seen both sides.",
+    "blocks": [
+      { "h2": "How a basic blockchain voting system works" },
+      { "ol": [
+        "A voter's identity is checked before voting opens, for example with a unique ID.",
+        "The voter signs in with a wallet such as MetaMask.",
+        "A smart contract accepts one vote per verified voter and records it on the blockchain.",
+        "The tally is stored on-chain, so anyone can read and recount it."
+      ] },
+      { "h2": "What it does well" },
+      { "ul": [
+        "An auditable count. Anyone can check the total without trusting one organisation's database.",
+        "Tamper resistance. Changing a recorded vote leaves a visible trace.",
+        "Rules that cannot be quietly changed. The contract enforces one vote per voter."
+      ] },
+      { "h2": "Where it falls short" },
+      { "ul": [
+        "Identity. The blockchain records what a wallet did, not who the person is. Checking eligibility still happens off-chain and must be trusted.",
+        "Privacy. Votes recorded publicly can reveal choices unless the design uses extra cryptography to protect them.",
+        "Coercion and vote selling. Voting from a personal device makes it harder to prevent someone watching or paying for a vote.",
+        "Usability. Wallets and keys are hard for many people, and a lost key means a lost vote.",
+        "Scale and cost. Every transaction has a fee and takes time."
+      ] },
+      { "h2": "Where it fits" },
+      { "p": "It suits smaller, lower-stakes votes where participants are known and a transparent count matters: student councils, clubs, associations and company decisions. For national elections, the identity, privacy and coercion problems mean it should not replace carefully designed official processes." },
+      { "h2": "A project example" },
+      { "p": "My own blockchain e-voting project follows the basic design above: unique-ID verification, MetaMask sign-in, one vote per verified user and a Solidity contract that makes the tally auditable. It is a good fit for a controlled group, and I treat it as a demonstration of the approach, not a replacement for official elections." },
+      { "p": "If you are considering an on-chain voting or verification system for an organisation, I can help you decide whether it is the right tool, and build it if it is." }
+    ]
+  }
+]

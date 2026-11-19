@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Facebook, Github, Instagram, Linkedin, Loader2, Mail, Send, Twitter } from 'lucide-react';
 import { siTiktok } from 'simple-icons';
 import { toast } from 'sonner';
-import { projects, services, site } from '@/data/site';
+import { site } from '@/data/site';
+import { articles, caseStudies, services as servicePages, urls } from '@/content';
 
 // TikTok has no icon in the icon set used for the others, so it is drawn from its own logo path
 const TikTok = ({ className }: { className?: string }) => (
@@ -21,33 +23,32 @@ const socials = [
   { icon: Mail, href: `mailto:${site.email}`, label: 'Email' },
 ];
 
-const columns: { title: string; links: { name: string; href: string; external?: boolean }[] }[] = [
+const columns: { title: string; links: { name: string; href: string; external?: boolean; internal?: boolean }[] }[] = [
   {
     title: 'About me',
     links: [
-      { name: 'Home', href: '#top' },
-      { name: 'About', href: '#about' },
-      { name: 'Projects', href: '#work' },
-      { name: 'Toolbox', href: '#stack' },
-      { name: 'Education', href: '#experience' },
-      { name: 'Contact', href: '#contact' },
+      { name: 'Home', href: '/#top' },
+      { name: 'About', href: '/#about' },
+      { name: 'Projects', href: '/#work' },
+      { name: 'Toolbox', href: '/#stack' },
+      { name: 'Education', href: '/#experience' },
+      { name: 'Contact', href: '/#contact' },
     ],
   },
   {
     title: 'Services',
     links: [
-      ...services.map((s) => ({ name: s.title, href: '#services' })),
-      { name: 'Smart contracts', href: '#services' },
-      { name: 'Landing pages', href: '#services' },
-      { name: 'Start a project', href: '#contact' },
+      ...servicePages.map((s) => ({ name: s.name, href: urls.service(s.slug), internal: true })),
+      { name: 'Start a project', href: '/#contact' },
     ],
   },
   {
     title: 'Recent work',
-    links: projects
-      .filter((p) => p.live)
-      .slice(0, 6)
-      .map((p) => ({ name: p.title, href: p.live as string, external: true })),
+    links: [
+      ...caseStudies.slice(0, 6).map((p) => ({ name: p.title, href: urls.project(p.slug), internal: true })),
+      { name: 'Blog', href: urls.blog, internal: true },
+      ...articles.slice(0, 1).map((a) => ({ name: 'Cost of a smart contract', href: urls.article(a.slug), internal: true })),
+    ],
   },
   {
     title: 'Connect',
@@ -59,7 +60,7 @@ const columns: { title: string; links: { name: string; href: string; external?: 
       { name: 'Instagram', href: site.instagram, external: true },
       { name: 'Facebook', href: site.facebook, external: true },
       { name: 'TikTok', href: site.tiktok, external: true },
-      { name: `${site.location} · ${site.timeLabel}`, href: '#contact' },
+      { name: `${site.location} · ${site.timeLabel}`, href: '/#contact' },
     ],
   },
 ];
@@ -90,7 +91,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
           {/* brand, email box, socials */}
           <div className="lg:col-span-4">
-            <a href="#top" aria-label="Nishchal KC, home" className="inline-block">
+            <a href="/#top" aria-label="Nishchal KC, home" className="inline-block">
               <img src="/logo.png" alt="Nishchal KC logo" className="h-14 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -142,6 +143,9 @@ export const Footer = () => {
                 <ul className="mt-4 space-y-2.5">
                   {c.links.map((l) => (
                     <li key={l.name}>
+                      {l.internal ? (
+                        <Link to={l.href} className="text-[13px] leading-snug text-foreground/85 transition-colors hover:text-accent">{l.name}</Link>
+                      ) : (
                       <a
                         href={l.href}
                         target={l.external ? '_blank' : undefined}
@@ -150,6 +154,7 @@ export const Footer = () => {
                       >
                         {l.name}
                       </a>
+                      )}
                     </li>
                   ))}
                 </ul>

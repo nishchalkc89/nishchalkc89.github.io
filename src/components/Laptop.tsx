@@ -1,5 +1,5 @@
 /** A laptop frame so every project screenshot shows at the same size and shape. */
-export const Laptop = ({ src, alt }: { src: string; alt: string }) => (
+export const Laptop = ({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) => (
   <div className="relative mx-auto w-full max-w-[640px]">
     {/* soft glow under the laptop */}
     <div aria-hidden className="absolute inset-x-[8%] -bottom-6 h-10 rounded-full bg-primary/40 blur-2xl" />
@@ -11,7 +11,10 @@ export const Laptop = ({ src, alt }: { src: string; alt: string }) => (
         <img
           src={src}
           alt={alt}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          width={1280}
+          height={800}
           className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
         />
       </div>

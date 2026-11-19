@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "blockchain-development",
+    "name": "Blockchain & smart contract development",
+    "short": "Solidity smart contracts, dApps and wallet integrations.",
+    "metaTitle": "Freelance Blockchain Developer for Hire | Nishchal KC",
+    "metaDescription": "Hire a freelance blockchain engineer for Solidity smart contracts, dApps, MetaMask sign-in and IPFS storage. Clear process, tested code, clients worldwide.",
+    "h1": "Freelance blockchain & smart contract developer",
+    "lead": "I'm Nishchal KC, a blockchain engineer who writes Solidity smart contracts and builds the web apps around them, so the on-chain part and the part people actually use are made by one person.",
+    "forWho": [
+      "Founders and teams who need on-chain logic, such as voting, verification or tamper-proof records",
+      "Businesses exploring blockchain who want a working proof of concept, not a slide deck",
+      "Developers and agencies who need a contract plus a front-end to go with it"
+    ],
+    "deliverables": [
+      "Solidity smart contracts for Ethereum and EVM-compatible networks",
+      "dApp front-ends with wallet sign-in through MetaMask",
+      "Document and file storage on IPFS, using services such as Pinata",
+      "Contract testing before anything is deployed to a live network",
+      "Containerised setups with Docker so the project is easy to run and move",
+      "Clear handover: code, setup notes and a walkthrough"
+    ],
+    "process": [
+      { "t": "Discover", "d": "We agree what the contract must do, who uses it and what counts as success. I write this down as a short brief you approve." },
+      { "t": "Design", "d": "I sketch the contract's functions, roles and data, and how the front-end talks to it, before writing the final code." },
+      { "t": "Build and test", "d": "I write the contract and the app together, and test the contract on a test network with regular check-ins." },
+      { "t": "Launch", "d": "Deploy, hand over the code and notes, and stay available for fixes after launch." }
+    ],
+    "tools": ["Solidity", "Ethereum", "Hardhat", "Truffle", "MetaMask", "IPFS", "Web3.js", "React", "TypeScript"],
+    "related": ["blockchain-exam-system", "blockchain-e-voting"],
+    "faq": [
+      {
+        "q": "What can a smart contract do for my project?",
+        "a": "A smart contract is code that runs on a blockchain and follows rules nobody can quietly change. It suits things that need a shared, auditable record, such as votes, certificates, ownership or payments between parties who do not fully trust each other. If your project does not need that, I will tell you, and a normal web app will serve you better."
+      },
+      {
+        "q": "Which blockchains do you work with?",
+        "a": "My experience is with Ethereum and Solidity, which also covers other EVM-compatible networks."
+      },
+      {
+        "q": "Do you test contracts before they go live?",
+        "a": "Yes. Contract testing is part of every build, and contracts are deployed to a test network first. For contracts that will hold significant value, I recommend an independent professional security audit as well."
+      },
+      {
+        "q": "Can you also build the website or app around the contract?",
+        "a": "Yes. I build the front-end in React and TypeScript, including wallet sign-in, so you get the whole product from one person."
+      },
+      {
+        "q": "How long will it take and what will it cost?",
+        "a": "It depends on how many functions, roles and screens the project needs. Send me a short description and I will reply with a scoped plan and an estimate."
+      }
+    ]
+  },
+  {
+    "slug": "full-stack-development",
+    "name": "Full-stack web development",
+    "short": "Complete web products, from database to deploy.",
+    "metaTitle": "Freelance Full-Stack Web Developer | Nishchal KC",
+    "metaDescription": "Hire a freelance full-stack developer for React and TypeScript front-ends, Node.js and Python back-ends, installable web apps and payments. Clients worldwide.",
+    "h1": "Freelance full-stack web developer",
+    "lead": "I'm Nishchal KC. I build complete web products: the interface people use, the server and database behind it, and the deployment that keeps it running.",
+    "forWho": [
+      "Small businesses that want to sell or take bookings online",
+      "Startups that need a first version of a product built and launched quickly",
+      "Teams that need one developer who can handle both front-end and back-end"
+    ],
+    "deliverables": [
+      "Front-ends in React and TypeScript with Tailwind CSS",
+      "Back-ends in Node.js or Python with SQL databases or Supabase",
+      "Installable web apps (PWAs) that work like an app on a phone",
+      "Online payments and local integrations, such as eSewa in Nepal",
+      "Deployment on Vercel or Netlify, and Docker where it helps",
+      "Admin screens, search, accounts, carts and booking flows"
+    ],
+    "process": [
+      { "t": "Discover", "d": "We agree the goal, the users and the first version's must-have features." },
+      { "t": "Design", "d": "Wireframes and a visual direction you approve before any code is written." },
+      { "t": "Build", "d": "Front-end and back-end are built together, with working demos you can click through at each step." },
+      { "t": "Launch", "d": "Deploy to your domain, hand over, and stay around for fixes and the next version." }
+    ],
+    "tools": ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Node.js", "Python", "MySQL", "Supabase", "Docker", "Vercel", "Netlify", "Git"],
+    "related": ["delight-shopping-mart", "nextowner", "printcloud", "doctor-appointment-booking"],
+    "faq": [
+      {
+        "q": "What technologies do you use?",
+        "a": "React and TypeScript on the front-end, Node.js or Python on the back-end, SQL databases or Supabase for data, and Vercel or Netlify for hosting. I pick what fits your project rather than forcing one stack."
+      },
+      {
+        "q": "Can you build an installable web app?",
+        "a": "Yes. Delight Shopping Mart and NextOwner are both installable web apps (PWAs), which means customers can add them to their phone's home screen and use them like a normal app."
+      },
+      {
+        "q": "Can you add online payments?",
+        "a": "Yes. PrintCloud takes payment through eSewa, and I can integrate other payment providers depending on where your customers are."
+      },
+      {
+        "q": "Can you work on a project that already exists?",
+        "a": "Often, yes. Share the code or the live site and I will review it and tell you honestly what is feasible and what it would take."
+      },
+      {
+        "q": "How long will it take and what will it cost?",
+        "a": "It depends on the number of screens and features. Send me a short description and I will reply with a scoped plan and an estimate."
+      }
+    ]
+  },
+  {
+    "slug": "web-design",
+    "name": "Web design & front-end",
+    "short": "Considered interfaces, designed and built by the same person.",
+    "metaTitle": "Freelance Web & UI Designer for Hire | Nishchal KC",
+    "metaDescription": "Hire a freelance web and UI designer who also builds. Landing pages, business sites and portfolios, responsive and fast. Designed and built by one person.",
+    "h1": "Freelance web & UI designer who also builds",
+    "lead": "I'm Nishchal KC. I design the screens and then build them, so what you approve is exactly what goes live, with nothing lost in hand-off.",
+    "forWho": [
+      "Businesses, shops and institutions that need a clear, professional website",
+      "Freelancers and creatives who need a portfolio that shows their work well",
+      "Startups that need a landing page that explains the product and gets sign-ups"
+    ],
+    "deliverables": [
+      "Visual design and layout for desktop and mobile",
+      "Landing pages, business websites and portfolios",
+      "Responsive builds that load quickly",
+      "Tasteful motion and interaction details",
+      "Clean, accessible markup with the basics of search engine optimisation built in",
+      "Hosting setup on Vercel or Netlify, and a handover you can manage"
+    ],
+    "process": [
+      { "t": "Discover", "d": "We talk about your audience, your content and what the site must achieve." },
+      { "t": "Design", "d": "I design the key pages and agree a visual direction with you." },
+      { "t": "Build", "d": "I build the approved design as a fast, responsive website." },
+      { "t": "Launch", "d": "Connect your domain, publish, and hand over with a short guide." }
+    ],
+    "tools": ["Figma", "React", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3", "JavaScript", "Vercel", "Netlify"],
+    "related": ["rushit", "awesh-portfolio", "aurora-roast-cafe", "uttarakhand-seva-nidhi", "tw-trainz", "the-mist", "rani-cake", "divya-kunj-academy", "debit-kc-health-assistant"],
+    "faq": [
+      {
+        "q": "Do you design and build, or only design?",
+        "a": "Both. Designing and building together keeps the result faithful to the design and saves you coordinating two people."
+      },
+      {
+        "q": "What kinds of websites have you made?",
+        "a": "Business and institution websites, restaurant and cafe sites, shop front-ends, a school website, a health assistant's personal site and creative portfolios. You can see them in the projects list."
+      },
+      {
+        "q": "Will my site work on phones?",
+        "a": "Yes. Every site is built mobile-first and tested on small screens."
+      },
+      {
+        "q": "Will people be able to find my site on Google?",
+        "a": "I build in the basics that search engines look for: clear page titles and descriptions, proper headings, fast loading and a sitemap. Ranking also depends on your content and links, which I can advise on."
+      },
+      {
+        "q": "How long will it take and what will it cost?",
+        "a": "It depends on the number of pages and how much content is ready. Send me a short description and I will reply with a scoped plan and an estimate."
+      }
+    ]
+  }
+]

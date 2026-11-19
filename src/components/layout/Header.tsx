@@ -3,12 +3,12 @@ import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const navLinks = [
-  { name: 'Home', href: '#top' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#work' },
-  { name: 'Services', href: '#services' },
-  { name: 'Education', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#top' },
+  { name: 'About', href: '/#about' },
+  { name: 'Projects', href: '/#work' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Education', href: '/#experience' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 export const Header = () => {
@@ -17,7 +17,7 @@ export const Header = () => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/5 bg-background/75 backdrop-blur-xl">
       <div className="wrap flex h-16 items-center justify-between gap-4">
-        <a href="#top" className="flex items-center" aria-label="Nishchal KC, home">
+        <a href="/#top" className="flex items-center" aria-label="Nishchal KC, home">
           <img src="/logo.png" alt="Nishchal KC logo" className="h-9 w-auto" />
         </a>
 

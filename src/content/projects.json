@@ -1,0 +1,314 @@
+[
+  {
+    "slug": "delight-shopping-mart",
+    "title": "Delight Shopping Mart",
+    "service": "full-stack-development",
+    "metaTitle": "Delight Shopping Mart: Online Supermarket Case Study",
+    "metaDescription": "Case study of Delight Shopping Mart, an installable online supermarket for Tulsipur and Ghorahi with store choice, categories, cart and home delivery.",
+    "summary": "An online supermarket for Tulsipur and Ghorahi in Dang, Nepal, with store choice, a full category menu, offers, a cart and home delivery.",
+    "overview": [
+      "Delight Shopping Mart is an online supermarket that lets people in Tulsipur and Ghorahi order everyday groceries and household goods for home delivery. It is my most recent main project.",
+      "The shop runs two stores, so the first thing a visitor does is choose which store to order from. Products, stock and delivery come from the store they choose. At the time of writing, both stores open from 7:00 AM to 9:00 PM, and the delivery fee is shown next to each store."
+    ],
+    "does": [
+      "Store chooser for the Tulsipur and Ghorahi branches, with opening hours and delivery information",
+      "Category menu: Groceries, Snacks, Beauty, Baby Care, Cleaning, Kitchen, Stationery, Toys, Gifts & Puja and Deals",
+      "Festival offer banners and discount badges on product cards, with prices in NPR",
+      "Search, account, wishlist, cart and order tracking",
+      "Installable web app (PWA), so customers can add it to their phone's home screen"
+    ],
+    "role": "I designed and built the whole website, front-end and back-end."
+  },
+  {
+    "slug": "nextowner",
+    "title": "NextOwner",
+    "service": "full-stack-development",
+    "metaTitle": "NextOwner: Campus Marketplace PWA Case Study",
+    "metaDescription": "Case study of NextOwner, an installable campus marketplace where students buy, sell and swap items, with categories, search and messaging.",
+    "summary": "A campus marketplace where students buy, sell and swap with each other, built as an installable web app.",
+    "overview": [
+      "NextOwner is a marketplace made for students. Instead of posting on crowded social media groups, students list what they no longer need and find what they do, inside one place built for campus life.",
+      "It is an installable web app (PWA), so it opens quickly from the home screen on a phone. The home screen leads with featured listings and a clear way to list an item for free."
+    ],
+    "does": [
+      "Browse and search listings, with categories such as Electronics, Furniture, Books, Appliances, Vehicles, Hostel, Clothes and Others",
+      "List an item for free, and buy, sell or swap with other students",
+      "Sign-in, messages between buyers and sellers, and notifications",
+      "Featured items with verified-seller badges",
+      "Installable on a phone like a normal app"
+    ],
+    "role": "I designed and built the product."
+  },
+  {
+    "slug": "printcloud",
+    "title": "PrintCloud",
+    "service": "full-stack-development",
+    "metaTitle": "PrintCloud: QR Code Printing Service Case Study",
+    "metaDescription": "Case study of PrintCloud, a print service built for Nepal: scan a QR code at a print shop, upload documents, pay with eSewa and get your prints.",
+    "summary": "A print service built for Nepal: scan a shop's QR code, upload a document, pay with eSewa and the prints come out automatically.",
+    "overview": [
+      "Printing at a shop usually means sending files over a chat app and waiting while the shopkeeper opens each one by hand. PrintCloud replaces that with a flow the customer controls from their own phone.",
+      "The customer scans the QR code at a print shop, uploads their document, pays with eSewa, and the print job goes to the shop's printer without anyone handling the file."
+    ],
+    "does": [
+      "QR code at each shop that opens that shop's upload page",
+      "Upload of PDF, DOC, JPG, PNG and other common file types",
+      "Payment through eSewa, the wallet many people in Nepal already use",
+      "Automatic printing with no manual steps for the shopkeeper",
+      "Privacy by design: files are removed automatically after printing",
+      "Installable on a phone, with a prompt to add it to the home screen"
+    ],
+    "role": "I designed and built the product."
+  },
+  {
+    "slug": "rushit",
+    "title": "RushIT",
+    "service": "web-design",
+    "metaTitle": "RushIT: Cybersecurity Company Website Case Study",
+    "metaDescription": "Case study of the RushIT website, a dark, high-contrast site for a cybersecurity and IT consulting company covering services and federal resources.",
+    "summary": "A website for a cybersecurity and IT consulting company, presenting its services, what sets it apart and its federal resources.",
+    "overview": [
+      "RushIT is a cybersecurity and IT consulting company that serves business and government clients. Its website needed to look credible and serious, and to make its services easy to scan.",
+      "I designed a dark, high-contrast layout with a gold accent, a strong headline about delivering effective security solutions, and a clear route to get in touch."
+    ],
+    "does": [
+      "Sections for Services, Differentiators, Performance and Federal Resources",
+      "A confident hero with a single clear call to action",
+      "Responsive layout that reads well on phones and desktops",
+      "Fast loading, with images sized for the web"
+    ],
+    "role": "I designed and built the website for the client."
+  },
+  {
+    "slug": "uttarakhand-seva-nidhi",
+    "title": "Uttarakhand Seva Nidhi",
+    "service": "web-design",
+    "metaTitle": "Uttarakhand Seva Nidhi: Charity Website Case Study",
+    "metaDescription": "Case study of the Uttarakhand Seva Nidhi website, a bright, readable site for a public charitable trust focused on environmental education.",
+    "summary": "A website for a public charitable trust working on environmental education and women's leadership in the hills of Uttarakhand.",
+    "overview": [
+      "Uttarakhand Seva Nidhi is a public charitable trust that runs environmental education programmes in rural schools and villages. Its website has to explain a long history and many programmes without overwhelming a first-time visitor.",
+      "I used a fresh green colour scheme, a large photo slider that shows the work in action, and a short statement of purpose at the top: building sustainable communities through education and action."
+    ],
+    "does": [
+      "Sections for Mission, About, Events, Publications and Our Work",
+      "Photo slider and clear calls to action: Our Programs and Get Involved",
+      "Readable typography and strong contrast",
+      "Responsive layout for visitors on phones"
+    ],
+    "role": "I designed and built the website for the client."
+  },
+  {
+    "slug": "tw-trainz",
+    "title": "TW Trainz",
+    "service": "web-design",
+    "metaTitle": "TW Trainz: Sales Training Company Website Case Study",
+    "metaDescription": "Case study of the TW Trainz website, a clean, editorial site for a sales training company with services, federal resources and experience pages.",
+    "summary": "A website for a sales training company that builds tailored, learner-centric training programs.",
+    "overview": [
+      "TW Trainz designs customised sales training. The website needed to explain what makes its programs different and to look calm and professional.",
+      "I paired a serif headline with a clean sans-serif body, a large team photo and plenty of white space, so the message about tailored training is the first thing visitors read."
+    ],
+    "does": [
+      "Pages for About Us, Services, Federal Resources, Experience and Contact",
+      "A 'Who is TW TRAINZ?' section that explains the approach in plain language",
+      "Clean, readable layout that works on any screen size"
+    ],
+    "role": "I designed and built the website for the client."
+  },
+  {
+    "slug": "awesh-portfolio",
+    "title": "Awesh Portfolio",
+    "service": "web-design",
+    "metaTitle": "Awesh Portfolio: Designer Portfolio Case Study",
+    "metaDescription": "Case study of a designer portfolio website built with Next.js and TypeScript: dark animated interface, services, process and a hire-me flow.",
+    "summary": "A portfolio website for Md. Awesh Shekh, a Kathmandu-based creative designer, built with Next.js and TypeScript.",
+    "overview": [
+      "A creative who works across graphic design, photo and video editing, 3D modeling and digital marketing needs one place that shows all of it clearly. This portfolio does that in a dark, animated interface.",
+      "The page opens with a confident introduction and headline numbers, then leads visitors through his work, services and process to a hire-me button."
+    ],
+    "does": [
+      "Hero with availability badge, skills and headline numbers",
+      "Sections for Work, Services, Process, About and Contact",
+      "Scrolling skills marquee and social links",
+      "Built with Next.js and TypeScript for speed and search-friendliness"
+    ],
+    "role": "I designed and developed the website."
+  },
+  {
+    "slug": "aurora-roast-cafe",
+    "title": "Aurora Roast Café",
+    "service": "web-design",
+    "metaTitle": "Aurora Roast Café: Coffee House Website Case Study",
+    "metaDescription": "Case study of the Aurora Roast coffee house website: warm, photo-led design with smooth motion and a table reservation button, built with Next.js.",
+    "summary": "A website for a small-batch, direct-trade coffee house, with an editorial look, rich photography and a table-reservation button.",
+    "overview": [
+      "A specialty coffee house sells atmosphere and story as much as coffee. This site uses large photography, warm colours and elegant serif type to show that before a visitor reads a word.",
+      "Smooth scrolling and gentle animation make the page feel calm, and a Reserve button stays within reach throughout."
+    ],
+    "does": [
+      "Layered photographic hero with headline numbers",
+      "Sections for About, Coffee, Gallery, Journey and Visit",
+      "Table reservation call to action",
+      "Smooth scrolling and animated transitions using GSAP, Framer Motion and Lenis",
+      "Built with Next.js, TypeScript and Tailwind CSS"
+    ],
+    "role": "I designed and developed the website."
+  },
+  {
+    "slug": "debit-kc-health-assistant",
+    "title": "Debit KC, Health Assistant",
+    "service": "web-design",
+    "metaTitle": "Debit KC Health Assistant: Personal Website Case Study",
+    "metaDescription": "Case study of a personal website for a certified health assistant: a friendly introduction, reviews and a make-an-appointment button.",
+    "summary": "A personal website for a certified health assistant, with an introduction, reviews and a clear appointment button.",
+    "overview": [
+      "A newly certified health assistant needed a simple online presence where people can learn who they are and ask for an appointment.",
+      "I built a light, friendly static website with a short introduction, an explanation of how care is planned with each person, and an appointment button in the header at all times."
+    ],
+    "does": [
+      "Introduction hero with portrait",
+      "About and reviews sections",
+      "Make-an-appointment call to action",
+      "Built with plain HTML, CSS and JavaScript, so it loads very quickly"
+    ],
+    "role": "I designed and built the website."
+  },
+  {
+    "slug": "blockchain-exam-system",
+    "title": "Blockchain Exam System",
+    "service": "blockchain-development",
+    "metaTitle": "Blockchain Exam System: IPFS & Solidity Case Study",
+    "metaDescription": "Case study of a tamper-proof online examination system: question papers stored on IPFS, results anchored on-chain with Solidity, run in Docker.",
+    "summary": "My final-year project: tamper-proof online examinations with question papers on IPFS and results anchored on-chain.",
+    "overview": [
+      "Exam papers and results are valuable, and both can be altered or leaked. This system uses a blockchain to make tampering visible: once a paper or result is recorded, changing it leaves a trace anyone can check.",
+      "Question papers are stored on IPFS through Pinata, results are anchored on-chain by a smart contract written in Solidity, and the whole system runs in Docker so it is easy to set up and scale. It was my final-year B.Tech project."
+    ],
+    "does": [
+      "Question papers stored on IPFS, so their content can be verified later",
+      "Results anchored on-chain so they cannot be changed quietly",
+      "Docker-based architecture for easy setup and scaling",
+      "Built with Solidity, IPFS, Pinata and Docker"
+    ],
+    "role": "I designed and built it as my final-year project.",
+    "note": "This is a private project, so there is no public demo. I am happy to walk you through it on a call."
+  },
+  {
+    "slug": "blockchain-e-voting",
+    "title": "Blockchain E-Voting",
+    "service": "blockchain-development",
+    "metaTitle": "Blockchain E-Voting: Solidity & MetaMask Case Study",
+    "metaDescription": "Case study of a blockchain voting app: one vote per verified user, MetaMask sign-in and a Solidity contract that makes the tally auditable.",
+    "summary": "A transparent online voting app with one vote per verified user, MetaMask sign-in and an auditable tally.",
+    "overview": [
+      "Voting systems need two things that pull against each other: every eligible person votes once, and everyone can trust the count. A smart contract helps with the second, because the tally lives on-chain and can be checked by anyone.",
+      "In this project each voter is verified with a unique ID, signs in through MetaMask and casts a single vote, recorded by a Solidity contract. A MySQL database supports the off-chain data."
+    ],
+    "does": [
+      "One vote per verified user, enforced by a unique ID check",
+      "Sign-in and vote signing with MetaMask",
+      "A Solidity smart contract that records votes and makes the tally auditable",
+      "Built with Solidity, Ethereum, MetaMask and MySQL"
+    ],
+    "role": "I designed and built the app and its smart contract.",
+    "note": "This is a private project, so there is no public demo. I am happy to walk you through it on a call."
+  },
+  {
+    "slug": "phishguard",
+    "title": "PhishGuard",
+    "service": "full-stack-development",
+    "metaTitle": "PhishGuard: Phishing URL Detection Case Study",
+    "metaDescription": "Case study of PhishGuard, a phishing link checker with real-time analysis, behavioural signals and zero-day checks, designed to work with a browser extension.",
+    "summary": "A phishing link checker with real-time analysis, behavioural signals and zero-day checks.",
+    "overview": [
+      "Phishing links often look almost identical to real ones. PhishGuard checks a link in real time so a user can find out whether it is safe before they click it.",
+      "The analysis combines real-time checks, behavioural signals about how a page acts, and checks aimed at brand-new threats. It is designed to work alongside a browser extension so the check can happen while browsing."
+    ],
+    "does": [
+      "Real-time URL analysis before you click",
+      "Behavioural signals and zero-day checks, not only lists of known bad links",
+      "Browser extension compatibility",
+      "Built with React, TypeScript, Supabase and machine learning"
+    ],
+    "role": "I designed and built the product.",
+    "note": "This is a private project, so there is no public demo. I am happy to walk you through it on a call."
+  },
+  {
+    "slug": "doctor-appointment-booking",
+    "title": "Doctor Appointment Booking",
+    "service": "full-stack-development",
+    "metaTitle": "Doctor Appointment Booking System Case Study",
+    "metaDescription": "Case study of a doctor appointment booking platform for patients and doctors, with front-end and back-end built during an internship at Verastix.",
+    "summary": "A booking platform for patients and doctors, with both the front-end and back-end delivered during my internship at Verastix.",
+    "overview": [
+      "Booking a doctor's appointment should not need phone calls. This platform lets patients find a doctor and choose a time, and gives doctors a clear view of their appointments.",
+      "I built it during my full-stack developer internship at Verastix Technology in Nepal, working on both the front-end and the back-end, with a focus on dependable data handling and ease of use."
+    ],
+    "does": [
+      "A booking flow for patients",
+      "Appointment management for doctors",
+      "Front-end and back-end built together with careful data handling",
+      "Built with React, Node.js and a database"
+    ],
+    "role": "I built the front-end and back-end during my internship.",
+    "note": "This was built for an employer, so there is no public demo. I am happy to walk you through it on a call."
+  },
+  {
+    "slug": "the-mist",
+    "title": "The Mist",
+    "service": "web-design",
+    "metaTitle": "The Mist: Restaurant Website Case Study",
+    "metaDescription": "Case study of The Mist, a restaurant website with a dark photographic design, menus, chefs, online ordering and table booking.",
+    "summary": "A restaurant website with online ordering and table booking, designed around how guests decide what to eat.",
+    "overview": [
+      "A restaurant website has to make people hungry and then make it easy to act. The Mist opens with full-screen food photography on a dark background, with a gold call to action to find a table.",
+      "Menus, the chefs and contact details sit one click away in the navigation, and the opening hours and phone number are shown at the very top."
+    ],
+    "does": [
+      "Full-screen photographic hero slider",
+      "Navigation for Menus, About Us, Our Chefs and Contact",
+      "Table booking and online ordering flow",
+      "Built with HTML, CSS and JavaScript"
+    ],
+    "role": "I designed and built the website."
+  },
+  {
+    "slug": "rani-cake",
+    "title": "Rani Cake",
+    "service": "web-design",
+    "metaTitle": "Rani Cake: Cake Shop Website Case Study",
+    "metaDescription": "Case study of the Rani Cake website, a warm red and orange storefront for a cake shop with product displays and gentle motion.",
+    "summary": "A cake shop storefront with warm product displays and gentle motion.",
+    "overview": [
+      "A cake shop is small and personal, and its website should feel that way. Rani Cake uses a deep red and orange palette, a large photo of a signature cake and hand-drawn food outlines to give the page character.",
+      "An Order Now button and a reservation button sit in the first screen, so a visitor can act immediately."
+    ],
+    "does": [
+      "Bold hero with a featured cake and clear calls to action",
+      "Navigation for Home, About Us, Shop, Blog and Contact",
+      "Product display cards and gentle animation",
+      "Built with HTML, CSS and JavaScript"
+    ],
+    "role": "I designed and built the website."
+  },
+  {
+    "slug": "divya-kunj-academy",
+    "title": "Divya Kunj Academy",
+    "service": "web-design",
+    "metaTitle": "Divya Kunj Academy: School Website Case Study",
+    "metaDescription": "Case study of the Divya Kunj Academy school website, with announcements, academics and contact details a tap away on any device.",
+    "summary": "A school website that puts announcements, academics and contact details a single tap away on any device.",
+    "overview": [
+      "Parents visit a school's website to find a few things quickly: what is happening, how the school performs and how to get in touch. This site is organised around exactly those questions.",
+      "A friendly headline, a large student photo and a clear Discover More button open the page. The navigation covers Home, About, Achievements, Success-Path, Blog and Contact."
+    ],
+    "does": [
+      "Hero with the school's message and crest",
+      "Pages for About, Achievements, Success-Path, Blog and Contact",
+      "Layout that works on any device",
+      "Built with HTML, CSS and JavaScript"
+    ],
+    "role": "I designed and built the website."
+  }
+]

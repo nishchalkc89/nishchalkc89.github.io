@@ -153,7 +153,7 @@
     "intro": "Many clients overseas work with developers in Nepal. Done well, it works smoothly. This guide covers what to expect and how to set up a project so distance does not get in the way. I am a freelance developer based in Nepal, so this comes from my own side of the table.",
     "blocks": [
       { "h2": "Time zones" },
-      { "p": "Nepal Time is UTC+5:45, so a typical working day in Nepal starts during the late afternoon in the UK and the middle of the night in North America. Some overlap is easy with the UK, Europe, the Middle East, India and Australia. With the Americas, plan one fixed overlap slot per week for calls and rely on written updates for the rest." },
+      { "p": "Nepal Time is UTC+5:45, so a 9 am to 5 pm day in Nepal runs from the early morning to late morning in the UK, and from the previous evening to the early hours in the US and Canada. Overlap is easy with India, the Middle East, Australia and the rest of Asia, and workable with the UK and Europe in their mornings. With the Americas, plan one fixed overlap slot per week for calls and rely on written updates for the rest." },
       { "h2": "Communication that works" },
       { "ul": [
         "Choose one main channel, such as email or a team chat, and keep decisions in writing.",
